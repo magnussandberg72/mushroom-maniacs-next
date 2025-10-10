@@ -1,0 +1,3 @@
+# Undvik autoformat på känsliga filer
+app/safe-pages.ts
+app/config/infoStructure.ts

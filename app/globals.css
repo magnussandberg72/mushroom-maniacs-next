@@ -1,0 +1,152 @@
+/*//Path: app/globals.css ======================================================
+   Mushroom Maniacs — Global styles
+      Snapshot: v1.0 (stabil grund, mobil först)
+         Path: app/globals.css
+            ====================================================== */
+
+            @tailwind base;
+            @tailwind components;
+            @tailwind utilities;
+
+            /* ---------- Basvariabler (vanlig CSS) ---------- */
+            :root{
+              --page-padding: clamp(16px, 3vw, 28px);
+
+                /* Färger (CSS-variabler, inte Tailwind arbitrary i @apply) */
+                  --bg-top:    #eef6ff;   /* ljusblå */
+                    --bg-mid:    #ffffff;   /* vit */
+                      --bg-bottom: #e6edff;   /* lite mörkare blå */
+                        --text-main: #0f2453;   /* mörk blå text */
+
+                          --surface:   #f7f9fe;   /* ljus yta till kort */
+                            --border:    #d7e0f3;
+
+                              --btn-blue:        #2563eb; /* primär blå (hover: #1d4ed8) */
+                                --btn-blue-hover:  #1d4ed8;
+
+                                  --soft-blue:       #dbeafe; /* för BackButton-ljusblå */
+                                    --soft-blue-2:     #bfdbfe;
+
+                                      --footer-bg: #0b0b0d;
+                                        --footer-fg: #d7def6;
+
+                                          --ring: #60a5fa;
+                                          }
+
+                                          /* ---------- Basreset & typsnitt ---------- */
+                                          html {
+                                            font-feature-settings: "cv02","cv03","cv04","ss01";
+                                              -webkit-font-smoothing: antialiased;
+                                                text-rendering: optimizeLegibility;
+                                                  scroll-behavior: smooth;
+                                                  }
+                                                  html[dir="rtl"] * { letter-spacing: 0.1px; }
+
+                                                  body {
+                                                    /* Gradient i vanlig CSS, så vi slipper arbitrary i @apply */
+                                                      background: linear-gradient(to bottom, var(--bg-top), var(--bg-mid) 40%, var(--bg-bottom));
+                                                        color: var(--text-main);
+                                                          font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans",
+                                                              "Apple Color Emoji","Segoe UI Emoji";
+                                                                min-height: 100vh;
+                                                                }
+
+                                                                /* Fokusringar – tillgänglighet */
+                                                                :focus-visible {
+                                                                  outline: 2px solid var(--ring);
+                                                                    outline-offset: 2px;
+                                                                    }
+
+                                                                    /* Lätt glas-känsla för sticky header om du vill använda .heal-glass */
+                                                                    .heal-glass {
+                                                                      backdrop-filter: saturate(140%) blur(6px);
+                                                                        background: linear-gradient(
+                                                                            to bottom,
+                                                                                rgba(255,255,255,.82),
+                                                                                    rgba(255,255,255,.62)
+                                                                                      );
+                                                                                        border-bottom: 1px solid rgba(120,150,200,.18);
+                                                                                        }
+
+                                                                                        /* ---------- Återanvändbara komponentklasser ---------- */
+                                                                                        @layer components {
+
+                                                                                          /* Container spacing hjälpare */
+                                                                                            .page-wrap {
+                                                                                                @apply mx-auto max-w-6xl px-4;
+                                                                                                  }
+
+                                                                                                    /* Kort (ytor) */
+                                                                                                      .mm-card {
+                                                                                                          background-color: var(--surface);
+                                                                                                              border: 1px solid var(--border);
+                                                                                                                  border-radius: 1rem; /* ≈ rounded-2xl */
+                                                                                                                      box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 1px 1px rgba(0,0,0,.02);
+                                                                                                                        }
+
+                                                                                                                          /* Bas-knapp */
+                                                                                                                            .btn {
+                                                                                                                                @apply inline-flex items-center justify-center font-semibold transition-colors duration-200 px-5 py-3 rounded-xl;
+                                                                                                                                  }
+
+                                                                                                                                    /* Primär blå knapp (t.ex. call-to-action) */
+                                                                                                                                      .btn-primary {
+                                                                                                                                          background-color: var(--btn-blue);
+                                                                                                                                              color: #ffffff;
+                                                                                                                                                }
+                                                                                                                                                  .btn-primary:hover {
+                                                                                                                                                      background-color: var(--btn-blue-hover);
+                                                                                                                                                        }
+
+                                                                                                                                                          /* Sekundär outline-knapp */
+                                                                                                                                                            .btn-outline {
+                                                                                                                                                                @apply border rounded-xl;
+                                                                                                                                                                    border-color: var(--border);
+                                                                                                                                                                        color: var(--text-main);
+                                                                                                                                                                            background-color: #ffffff;
+                                                                                                                                                                              }
+                                                                                                                                                                                .btn-outline:hover {
+                                                                                                                                                                                    background-color: #f8fafc;
+                                                                                                                                                                                      }
+
+                                                                                                                                                                                        /* ===== Global BackButton (ljusblå med medelblå text) ===== */
+                                                                                                                                                                                          .back-btn {
+                                                                                                                                                                                              @apply inline-flex items-center justify-center font-semibold px-8 py-3 rounded-xl shadow-md transition-all duration-200;
+                                                                                                                                                                                                  background-color: var(--soft-blue);
+                                                                                                                                                                                                      color: #1e3a8a; /* medelblå */
+                                                                                                                                                                                                        }
+                                                                                                                                                                                                          .back-btn:hover {
+                                                                                                                                                                                                              background-color: var(--soft-blue-2);
+                                                                                                                                                                                                                  box-shadow: 0 6px 16px rgba(30,58,138,0.18);
+                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                      /* ===== Footer-donate-knapp (glow) ===== */
+                                                                                                                                                                                                                        .donate-btn {
+                                                                                                                                                                                                                            @apply inline-flex items-center justify-center font-semibold px-6 py-3 rounded-xl transition-all duration-300;
+                                                                                                                                                                                                                                background-color: var(--soft-blue);
+                                                                                                                                                                                                                                    color: #1e3a8a;
+                                                                                                                                                                                                                                        box-shadow: 0 0 12px rgba(96,165,250,0.55);
+                                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                                            .donate-btn:hover {
+                                                                                                                                                                                                                                                background-color: var(--soft-blue-2);
+                                                                                                                                                                                                                                                    box-shadow: 0 0 18px rgba(59,130,246,0.8);
+                                                                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                                                                        /* Footer utseende */
+                                                                                                                                                                                                                                                          .site-footer {
+                                                                                                                                                                                                                                                              background-color: var(--footer-bg);
+                                                                                                                                                                                                                                                                  color: var(--footer-fg);
+                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                    /* ---------- Små utilities (fria från arbitrary) ---------- */
+                                                                                                                                                                                                                                                                    .hr-soft {
+                                                                                                                                                                                                                                                                      border: 0;
+                                                                                                                                                                                                                                                                        height: 1px;
+                                                                                                                                                                                                                                                                          background: linear-gradient(to right, transparent, var(--border), transparent);
+                                                                                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                                                                                          /* Avstånd runt BackButton globalt */
+                                                                                                                                                                                                                                                                          .backbtn-wrap {
+                                                                                                                                                                                                                                                                            @apply mt-12 mb-8 flex justify-center;
+                                                                                                                                                                                                                                                                            }

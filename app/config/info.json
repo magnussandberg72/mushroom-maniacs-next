@@ -1,0 +1,14 @@
+{
+  "routes": [
+      "/admin/info",
+          "/admin/info/privacy",
+              "/admin/info/license",
+                  "/admin/info/policy"
+                    ],
+                      "pageFiles": [
+                          "./admin/info/page",
+                              "./admin/info/privacy/page",
+                                  "./admin/info/license/page",
+                                      "./admin/info/policy/page"
+                                        ]
+                                        }

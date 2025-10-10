@@ -1,0 +1,75 @@
+# =============================
+# .v0ignore – Ignorera allt som standard
+# =============================
+
+**                             # Ignorera allt
+
+# Tillåt denna ignorefil (så vi kan ändra den)
+!.v0ignore
+
+# Tillåt konfigurationsfiler i roten
+!package.json
+!tsconfig.json
+!tailwind.config.ts
+!postcss.config.js
+!next.config.mjs
+
+# =============================
+# APP-SIDOR – matchar safe-pages.ts
+# =============================
+
+# HEM
+!app/page.tsx
+
+# TEST
+!app/testsida/page.tsx
+
+# KÄRN-SIDOR
+!app/ai-room/page.tsx
+!app/resources/page.tsx
+!app/app-room/page.tsx
+!app/donate/page.tsx
+!app/church/page.tsx
+
+# ÖVRIGA AKTIVA SIDOR
+!app/chat/page.tsx
+!app/events/page.tsx
+!app/help/page.tsx
+!app/testimonies/page.tsx
+
+# STUBS / EXTRA
+!app/privacy/**
+!app/license/**
+
+# =============================
+# BAUTA-PROJEKT (viktig struktur)
+# =============================
+
+# BAUTA-sidor
+!app/bauta/page.tsx
+!app/bauta/[id]/page.tsx
+
+# BAUTA-datafiler
+!data/bauta/index.ts
+!data/bauta/bauta_1.ts
+!data/bauta/bauta_2.ts
+!data/bauta/bauta_3.ts
+
+# =============================
+# DATA-ÖVRIGT
+# =============================
+!data/**
+!data/bauta.ts       # Legacy, kan tas bort när klar
+
+# =============================
+# SAFE-FILER & SYSTEMSKYDD
+# =============================
+!app/safe-pages.ts
+!components/safe-barrel.ts
+
+# =============================
+# KOMPONENTER (Globala UI-delar)
+# =============================
+!components/SiteHeader.tsx
+!components/Footer.tsx
+!components/BackButton.tsx
